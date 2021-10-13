@@ -23,5 +23,4 @@ public class ListAction implements Action {
 		request.setAttribute("list", list);
 		MvcUtil.forward("/guestbook/list", request, response);
 	}
-
 }

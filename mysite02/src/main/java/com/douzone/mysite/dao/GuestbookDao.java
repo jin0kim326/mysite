@@ -81,13 +81,13 @@ public class GuestbookDao {
 				while(rs.next()) {
 					Long no = rs.getLong(1);
 					String name = rs.getString(2);
-					Date reg_date  = rs.getDate(3);
+					Date regDate  = rs.getDate(3);
 					String message = rs.getString(4);
 										
 					GuestbookVo vo = new GuestbookVo();
 					vo.setNo(no);
 					vo.setName(name);
-					vo.setReg_date(reg_date);
+					vo.setRegDate(regDate);
 					vo.setMessage(message);
 					
 					result.add(vo);
@@ -114,7 +114,7 @@ public class GuestbookDao {
 			return result;
 	}
 	
-	public boolean delete(Long no, String password) {
+	public boolean delete(GuestbookVo vo) {
 		boolean result = false;
 		
 		Connection conn = null;
@@ -133,8 +133,8 @@ public class GuestbookDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			//4. 바인딩(binding)
-			pstmt.setLong(1, no);
-			pstmt.setString(2, password);
+			pstmt.setLong(1, vo.getNo());
+			pstmt.setString(2, vo.getPassword());
 			
 			//5. SQL 실행
 			int count = pstmt.executeUpdate();
