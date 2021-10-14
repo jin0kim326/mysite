@@ -13,9 +13,11 @@
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp"/>
 		<div id="content">
-			<div id="board">
+			<div id="board">				
 				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board">
 					<input type = "hidden" name = "a" value="write">
+					<input type = "hidden" name = "userNo" value="${authUser.no }"> 
+					<input type = "hidden" name = "boardNo" value="${boardNo }">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>

@@ -88,6 +88,11 @@ tr.even td	{ background-color:#e8ecf6 }
 
 .tbl-ex a { text-decoration:none; font-weight:bold; }
 
+/* div.btnContainer {
+	display: flex;
+    justify-content: space-between;	
+} */
+
 div.bottom {
 	width:100%;
 	height:50px;
