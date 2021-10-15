@@ -17,7 +17,11 @@
 				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board">
 					<input type = "hidden" name = "a" value="write">
 					<input type = "hidden" name = "userNo" value="${authUser.no }"> 
-					<input type = "hidden" name = "boardNo" value="${boardNo }">
+					<input type = "hidden" name = "boardNo" value="${board.no }">
+					<input type = "hidden" name = "groupNo" value="${board.groupNo }">
+					<input type = "hidden" name = "orderNo" value="${board.orderNo }">
+					<input type = "hidden" name = "depth" value="${board.depth }">
+					<input type = "hidden" name = "board" value="${board}">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>

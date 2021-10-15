@@ -33,9 +33,7 @@
 				</table>
 				<div class=btnContainer>
 					<div class="bottom">
-						<a href="${pageContext.servletContext.contextPath }/board?a=addform&userNo=${authUser.no}&boardNo=${board.no}">답글달기</a>
-					</div>
-					<div class="bottom">
+						<a class='r' href="${pageContext.servletContext.contextPath }/board?a=addform&userNo=${authUser.no}&boardNo=${board.no}">답글달기</a>
 						<a href="">글목록</a>
 						<a href="">글수정</a>
 					</div>

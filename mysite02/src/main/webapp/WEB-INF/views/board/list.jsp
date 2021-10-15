@@ -28,9 +28,10 @@
 						<th>&nbsp;</th>
 					</tr>				
 					
+					<c:set var="count" value="${fn:length(list) }"></c:set>
 					<c:forEach items='${list }' var='vo' varStatus='status'>
 						<tr>
-							<td>${vo.groupNo }</td>
+							<td>${count-status.index }</td>
 							<td style="text-align:left; padding-left:${20*vo.depth }px">
 								<img src='${pageContext.servletContext.contextPath }/assets/images/reply.png'> 
 								<a href="${pageContext.servletContext.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a></td>

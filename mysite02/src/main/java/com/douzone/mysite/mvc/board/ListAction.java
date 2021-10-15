@@ -18,7 +18,6 @@ public class ListAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<BoardVo> list = new BoardDao().findAll();
-		System.out.println(list);
 				
 		request.setAttribute("list", list);
 		MvcUtil.forward("/board/list", request, response);

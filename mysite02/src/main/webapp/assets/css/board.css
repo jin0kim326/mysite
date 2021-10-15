@@ -104,6 +104,12 @@ div.bottom a {
 	dispaly:block;
 }
 
+div.bottom a { 
+	text-decoration:none; 
+	dispaly:block;
+}
+
+
 a#new-book	 { 
 	float:right; 
 	padding:10px 20px 10px 20px ; 
@@ -123,6 +129,8 @@ a#new-book	 {
 	color:#111;
 	cursor: pointer	
 }
+
+.board-form .bottom a.r { float:left; }
 
 .board-form .bottom a {
 	margin-left: 10px;
