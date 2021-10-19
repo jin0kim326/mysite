@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 	
-	@ResponseBody
-	@RequestMapping({"", "/"})
+	@RequestMapping({"", "/main"})
 	public String index() {
-		return "mysite03.index() called!!";
+		return "main/index";
 	}
 }
