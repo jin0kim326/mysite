@@ -13,6 +13,7 @@ public class MainAction implements Action {
 
 	public void execute(HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
+		
 		MvcUtil.forward("/main/index", request, response);
 	}
 

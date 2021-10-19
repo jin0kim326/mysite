@@ -267,7 +267,7 @@ public class BoardDao {
 					
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.
+			pstmt.setLong(1, vo.)
 			// SQL 실행
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
