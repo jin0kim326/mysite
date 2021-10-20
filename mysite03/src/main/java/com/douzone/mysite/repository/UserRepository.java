@@ -26,7 +26,7 @@ public class UserRepository {
 			conn = getConnection();
 			
 			//SQL 준비
-			String sql = "SELECT no,"
+			String sql = "ELECT no," 
 					+ "	  		 name"
 					+ "  	FROM user"
 					+ "    WHERE email = ? "
@@ -210,7 +210,7 @@ public class UserRepository {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
+		 	}
 		}		
 		
 		return result;
