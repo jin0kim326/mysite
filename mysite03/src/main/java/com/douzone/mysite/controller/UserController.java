@@ -46,23 +46,23 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(
-		HttpSession session,
-		@RequestParam (value="email", required=true, defaultValue="") String email,
-		@RequestParam (value="password", required=true, defaultValue="") String password,
-		Model model) {
-		UserVo userVo = userService.getUser(email, password);
-		if (userVo == null) {
-			model.addAttribute("result", "fail");
-			return "user/login";
-		}
-		
-		/* 인증 처리 */
-		session.setAttribute("authUser", userVo);
-		
-		return "redirect:/";
-	}
+//	@RequestMapping(value="/login", method=RequestMethod.POST)
+//	public String login(
+//		HttpSession session,
+//		@RequestParam (value="email", required=true, defaultValue="") String email,
+//		@RequestParam (value="password", required=true, defaultValue="") String password,
+//		Model model) {
+//		UserVo userVo = userService.getUser(email, password);
+//		if (userVo == null) {
+//			model.addAttribute("result", "fail");
+//			return "user/login";
+//		}
+//		
+//		/* 인증 처리 */
+//		session.setAttribute("authUser", userVo);
+//		
+//		return "redirect:/";
+//	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String update(HttpSession session, Model model) {
