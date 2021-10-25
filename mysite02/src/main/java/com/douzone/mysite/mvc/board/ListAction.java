@@ -30,3 +30,16 @@ public class ListAction implements Action {
 	}
 
 }
+
+/*
+ * 1. index()
+ * 2. view()
+ *  3.delete()
+ *  4. modify() - GET
+ *  5. modify() - POST
+ *  6. write() - GET 
+ *  7. write() - POST
+ *  8. reply
+ * 
+ * */
+ 

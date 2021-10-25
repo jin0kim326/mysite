@@ -34,7 +34,7 @@
 							<td>${count-status.index }</td>
 							<td style="text-align:left; padding-left:${20*vo.depth }px">
 								<img src='${pageContext.servletContext.contextPath }/assets/images/reply.png'> 
-								<a href="${pageContext.servletContext.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a></td>
+								<a href="${pageContext.servletContext.contextPath }/board/view/${vo.no}">${vo.title }</a></td>
 							<td>${vo.userName }</td>
 							<td>${vo.hit }</td>
 							<td>${vo.regDate }</td>
@@ -61,7 +61,7 @@
 				<!-- pager 추가 -->
 				
 				<div class="bottom">
-					<a href="${pageContext.servletContext.contextPath }/board?a=addform&userNo=${authUser.no}" id="new-book">글쓰기</a>
+					<a href="${pageContext.servletContext.contextPath }/board/write" id="new-book">글쓰기</a>
 				</div>				
 			</div>
 		</div>

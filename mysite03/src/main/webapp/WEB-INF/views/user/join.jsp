@@ -8,11 +8,51 @@
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.9.0.js"></script>
+
+<script>
+/* setTimeout( () => {
+	option = {
+			url:"/mysite03/msg02",
+			type:"get",
+			dataType: "json",
+			data: Json.stringify({}),
+			success: function(response) { 
+							console.log(response);
+							box = $("#box");
+							box.html(response.message);
+						}
+	};
+	
+		$.ajax (option);
+ },3000) */ 
+ $( () => { 
+	 $("#btn-check-email").click(function() {
+	 	var email = $("#email").val();
+	 	if (email =='') {
+	 		return;
+	 	}
+	 	
+	 	console.log(email);
+	 	$.ajax({
+	 		url: "${pageContext.request.contextPath }/user/checkemail?emali="+email,
+	 		type:"get",
+	 		dataType:"json",
+	 		success: (response) => {
+	 			console.log(response);
+	 		}
+	 	})
+	 });
+});
+
+</script>
+
 </head>
 <body>
 	<div id="container">
 		<c:import url="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
+		 <div id="box"></div>
 			<div id="user">
 				<form id="join-form" name="joinForm" method="post" action="${pageContext.request.contextPath }/user/join">
 					<label class="block-label" for="name">이름</label>
@@ -20,7 +60,7 @@
 
 					<label class="block-label" for="email">이메일</label>
 					<input id="email" name="email" type="text" value="">
-					<input type="button" value="중복체크">
+					<input id="btn-check-email" type="button" value="중복체크">
 					
 					<label class="block-label">패스워드</label>
 					<input name="password" type="password" value="">

@@ -11,7 +11,8 @@
 					 #{email } ,
 					 #{password } ,
 					 #{gender } ,
-					 now())
+					 now(),
+					 'USER')
 		]]>		
 	</insert>
 	
@@ -28,7 +29,8 @@
 	<select id="findByEmailAndPassword" parameterType="map" resultType="uservo" >
 		<![CDATA[
 			SELECT no, 
-				   name
+				   name,
+				   role
 			  FROM user
 			 WHERE email = #{e } 
 			   AND password = #{p }

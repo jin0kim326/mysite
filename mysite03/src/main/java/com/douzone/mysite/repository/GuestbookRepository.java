@@ -31,8 +31,6 @@ public class GuestbookRepository {
 	
 	public boolean insert(GuestbookVo vo) {
 		int count = sqlSession.insert("guestbook.insert", vo);
-		System.out.println(vo);
 		return count == 1;
-		
 	}
 }

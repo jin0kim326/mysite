@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<select id="findAll" resultType="boardvo">
+		<![CDATA[
+			SELECT b.no,
+				   b.title,
+				   b.contents,
+				   b.hit,
+				   date_format(b.reg_date,'%Y-%m-%d %h:%i:%s'),
+				   b.group_no,
+				   b.order_no,
+				   b.depth,
+				   u.name
+			  FROM board b,
+				   user u
+			 WHERE b.user_no = u.no
+		  ORDER BY group_no desc,
+				   order_no asc
+		]]>
+	</select>
+	
+	<select id="findOne" parameterType="long" resultType="boardvo">
+		<![CDATA[
+			SELECT b.no,
+				   b.title,
+				   b.contents,
+				   b.hit,
+				   date_format(b.reg_date,'%Y-%m-%d %h:%i:%s'),
+				   b.group_no,
+				   b.order_no,
+				   b.depth,
+				   u.name,
+				   u.no
+				   FROM board b,
+				   user u
+			 WHERE b.user_no = u.no
+			   AND b.no = #{no } 
+		  ORDER BY group_no desc,
+				   order_no asc
+		]]>
+	</select>
+	
+	<insert id="write" parameterType="boardvo">
+		<![CDATA[
+			 INSERT 
+			   INTO board
+			 VALUES (null,
+					 ?,					
+					 ?,
+					 0,
+					 now(),
+	       			(select coalesce(max(a.group_no)+1,1) from board a),
+	 				 1,
+					 1,
+					 ?)
+		]]>
+	</insert>
+	
+</mapper>
