@@ -33,6 +33,10 @@ public class UserRepository {
 		return result == 1;
 		
 	}
+
+	public UserVo findByEmail(String email) {
+		return sqlSession.selectOne("user.findByEmail", email);
+	}
 	
 	public UserVo findByNo(Long no) throws UserRepositoryException {
 		return sqlSession.selectOne("user.findByNo",no);
@@ -42,4 +46,5 @@ public class UserRepository {
 		int count = sqlSession.update("user.update", vo);
 		return count == 1;
 	}
+
 }

@@ -47,6 +47,17 @@
 			 WHERE no = #{ no }
 		]]>
 	</select>
+	
+	<select id="findByEmail" parameterType="string" resultType="uservo" >
+		<![CDATA[
+			SELECT no, 
+				   name,
+				   email,
+				   gender
+			  FROM user
+			 WHERE email = #{ email }
+		]]>
+	</select>
 		
 	<delete id="delete" parameterType="uservo">
 		<![CDATA[

@@ -35,11 +35,23 @@
 	 	
 	 	console.log(email);
 	 	$.ajax({
-	 		url: "${pageContext.request.contextPath }/user/checkemail?emali="+email,
+	 		url: "${pageContext.request.contextPath }/user/api/checkemail?email="+email,
 	 		type:"get",
 	 		dataType:"json",
 	 		success: (response) => {
 	 			console.log(response);
+	 			
+	 			if (response.exist) {
+	 				alert("이미 존재하는 이메일입니다. 다른 이메일을 사용하세요. ");
+	 				$("#email")
+	 					.val("")
+	 					.focus();
+	 				return;
+	 			}
+	 			
+	 			$("#btn-check-email").hide();
+	 			$("#img-check-email").show();
+	 			
 	 		}
 	 	})
 	 });
@@ -61,6 +73,8 @@
 					<label class="block-label" for="email">이메일</label>
 					<input id="email" name="email" type="text" value="">
 					<input id="btn-check-email" type="button" value="중복체크">
+					<img id="img-check-email" src="${pageContext.request.contextPath }/assets/images/check.png" 
+						 style="display:none; width:16px"/>
 					
 					<label class="block-label">패스워드</label>
 					<input name="password" type="password" value="">

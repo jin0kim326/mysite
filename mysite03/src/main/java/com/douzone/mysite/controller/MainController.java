@@ -36,14 +36,4 @@ public class MainController {
 		
 		return map;
 	}
-	
-	@ResponseBody
-	@RequestMapping("/user/checkemail")
-	public Object checkEmail(/* HttpServletResponse resp*/) throws Exception {
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("message", "Hello World");
-		
-		return map;
-	}
 }
