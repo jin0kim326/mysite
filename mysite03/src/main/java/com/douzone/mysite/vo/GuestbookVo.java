@@ -1,7 +1,5 @@
 package com.douzone.mysite.vo;
 
-import java.util.Date;
-
 public class GuestbookVo {
 	private Long no;
 	private String name;

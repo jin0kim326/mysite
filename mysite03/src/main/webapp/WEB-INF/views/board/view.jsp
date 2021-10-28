@@ -20,30 +20,28 @@
 					</tr>
 					<tr>
 						<td class="label">제목</td>
-						<td>${board.title }</td>
+						<td>${boardVo.title }</td>
 					</tr>
 					<tr>
 						<td class="label">내용</td>
 						<td>
 							<div class="view-content">
-								${board.contents}
+								${boardVo.contents}
 							</div>
 						</td>
 					</tr>
 				</table>
 				<div class=btnContainer>
 					<div class="bottom">
-						<a class='r' href="${pageContext.servletContext.contextPath }/board/add&userNo=${authUser.no}&boardNo=${boardVo.no}">답글달기</a>
-						<a href="">글목록</a>
-						<a href="">글수정</a>
+						<a class='r' href="${pageContext.servletContext.contextPath }/board/reply/${boardVo.no}">답글달기</a>
+						<a href="${pageContext.servletContext.contextPath }/board">글목록</a>
+						<a href="${pageContext.servletContext.contextPath }/board/modify/${boardVo.no}">글수정</a>
 					</div>
 				</div>	
 				
 			</div>
 		</div>
-		<c:import url="/WEB-INF/views/includes/navigation.jsp">
-			<c:param name="menu" value="board"/>
-		</c:import>
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"/>
 		<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 	</div>
 </body>

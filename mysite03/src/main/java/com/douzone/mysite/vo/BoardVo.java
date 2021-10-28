@@ -1,16 +1,14 @@
 package com.douzone.mysite.vo;
 
-import java.util.Date;
-
 public class BoardVo {
 	private Long no;
 	private String title;
 	private String contents;
-	private Long hit;
-	private Date regDate;
-	private Long groupNo;
-	private Long orderNo;
-	private Long depth;
+	private String regDate;
+	private Integer hit;
+	private Integer groupNo;
+	private Integer orderNo;
+	private Integer depth;
 	private Long userNo;
 	private String userName;
 	
@@ -32,34 +30,34 @@ public class BoardVo {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Long getHit() {
-		return hit;
-	}
-	public void setHit(Long hit) {
-		this.hit = hit;
-	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	public Long getGroupNo() {
+	public Integer getHit() {
+		return hit;
+	}
+	public void setHit(Integer hit) {
+		this.hit = hit;
+	}
+	public Integer getGroupNo() {
 		return groupNo;
 	}
-	public void setGroupNo(Long groupNo) {
+	public void setGroupNo(Integer groupNo) {
 		this.groupNo = groupNo;
 	}
-	public Long getOrderNo() {
+	public Integer getOrderNo() {
 		return orderNo;
 	}
-	public void setOrderNo(Long orderNo) {
+	public void setOrderNo(Integer orderNo) {
 		this.orderNo = orderNo;
 	}
-	public Long getDepth() {
+	public Integer getDepth() {
 		return depth;
 	}
-	public void setDepth(Long depth) {
+	public void setDepth(Integer depth) {
 		this.depth = depth;
 	}
 	public Long getUserNo() {
@@ -68,7 +66,6 @@ public class BoardVo {
 	public void setUserNo(Long userNo) {
 		this.userNo = userNo;
 	}
-	
 	public String getUserName() {
 		return userName;
 	}
@@ -77,12 +74,8 @@ public class BoardVo {
 	}
 	@Override
 	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", hit=" + hit + ", regDate="
-				+ regDate + ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userNo=" + userNo
+		return "BoardVo [no=" + no + ", title=" + title + ", contents=" + contents + ", regDate=" + regDate + ", hit="
+				+ hit + ", groupNo=" + groupNo + ", orderNo=" + orderNo + ", depth=" + depth + ", userNo=" + userNo
 				+ ", userName=" + userName + "]";
 	}
-	
-	
-	
-	
 }

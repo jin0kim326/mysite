@@ -3,22 +3,34 @@ package com.douzone.mysite.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.douzone.mysite.security.Auth;
-
 
 @Controller
 public class MainController {
-	@Auth
+	@Autowired
+	ServletContext servletContext;
+	
 	@RequestMapping({"", "/main"})
 	public String index() {
 		return "main/index";
 	}
+	
+//	어드민 페이지 참
+//	@RequestMapping({"", "/main"})
+//	public String index() {
+//		SiteVo site = servletContext.getAttribute("site");
+//		if (site == null) {
+//			SiteVo vo = siteService.getSite();
+//			servletContext.setAttribute("site", vo);
+//		}
+//		return "main/index";
+//	}
 	
 	@ResponseBody
 	@RequestMapping("/msg01")

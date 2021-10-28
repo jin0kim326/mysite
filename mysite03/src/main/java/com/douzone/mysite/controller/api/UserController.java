@@ -22,13 +22,6 @@ public class UserController {
 	public JsonResult checkEmail(
 		@RequestParam(value="email", required=true, defaultValue="") String email) {
 		UserVo userVo = userService.getUser(email);
-		
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("result", "success");
-//		map.put("data", userVo != null);
-//		map.put("message", null);
-		
-		
 		return JsonResult.success(userVo != null);
 	}
 }
