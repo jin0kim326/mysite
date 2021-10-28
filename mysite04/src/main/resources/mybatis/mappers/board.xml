@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<select id="findAll" parameterType="map" resultType="boardvo">
+		<choose>
+			<when test="keyword == null or keyword == ''">
+				<![CDATA[
+				  SELECT a.no,
+				  		 a.title,
+				  		 a.hit,
+				  		 date_format(a.reg_date,'%Y-%m-%d %h:%i:%s') as regDate,
+				  		 a.depth,
+				  		 b.name as userName,
+				  		 a.user_no as userNo
+					FROM board a, user b
+				   WHERE a.user_no = b.no
+				ORDER BY group_no desc, order_no asc
+				   LIMIT #{startIndex }, #{size }				
+				]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+				  SELECT a.no,
+				  		 a.title,
+				  		 a.hit,
+				  		 date_format(a.reg_date,'%Y-%m-%d %h:%i:%s') as regDate,
+				  		 a.depth, 
+				  		 b.name as userName,
+				  		 a.user_no as userNo
+				  	FROM board a, user b
+				   WHERE a.user_no = b.no
+				     AND (title like '%${keyword }%' or contents like '%${keyword }%')
+				ORDER BY group_no desc, order_no asc
+				   LIMIT #{startIndex }, #{size }				
+				]]>			
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findOne" parameterType="long" resultType="boardvo">
+		<![CDATA[
+			SELECT b.no,
+				   b.title,
+				   b.contents,
+				   b.hit,
+				   date_format(b.reg_date,'%Y-%m-%d %h:%i:%s'),
+				   b.group_no as groupNo,
+				   b.order_no as orderNo,
+				   b.depth,
+				   u.name as userName,
+				   u.no as userNo
+		      FROM board b,
+		           user u
+			 WHERE b.user_no = u.no
+			   AND b.no = #{no } 
+		  ORDER BY group_no desc,
+				   order_no asc
+		]]>
+	</select>
+	
+	<select id="findByNoAndUserNo" parameterType="map" resultType="boardvo">
+		<![CDATA[
+			 SELECT no,
+					title,
+					contents
+			   FROM board
+			  WHERE no = #{no }
+			    AND user_no = #{userNo }		
+		]]>		
+	</select>	
+	
+	<select id="totalCount" parameterType="string" resultType="integer">
+		<choose>
+			<when test="_parameter == null or _parameter == ''">
+				<![CDATA[
+					SELECT count(*) from board
+				]]>				
+			</when>
+			<otherwise>
+				<![CDATA[
+					SELECT count(*) 
+					  FROM board
+					 WHERE (title like '%${_parameter }%' or contents like '%${_parameter  }%') 
+				]]>				
+			</otherwise>
+		</choose>	
+	</select>
+	
+			
+	<insert id="write" parameterType="boardvo">
+		<choose>
+			<when test="groupNo == null">
+			<![CDATA[
+				 INSERT 
+				   INTO board
+				 VALUES (null,
+						 #{title },					
+						 #{contents },
+						 0,
+						 now(),
+		       			(select coalesce(max(a.group_no)+1,1) from board a),
+		 				 1,
+						 0,
+						 #{userNo })
+			]]>
+			</when>
+			<otherwise>
+				<![CDATA[
+				insert
+				  into board
+				values ( null,
+						 #{title },
+						 #{contents },
+						 0,
+						 now(),
+						 #{groupNo },
+						 #{orderNo }, 
+						 #{depth }, 
+						 #{userNo } )				
+				]]>
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<update id="incOrderNo" parameterType="map">
+		<![CDATA[
+			UPDATE board 
+			   SET order_no = order_no + 1
+			 WHERE group_no = #{groupNo}
+			   AND order_no >= #{orderNo}
+		]]>
+	</update>
+	
+	<delete id="deleteOne" parameterType="map" > 
+		<![CDATA[
+			DELETE
+			  FROM board 
+			 WHERE no = #{no }
+			   AND user_no = #{userNo }
+		]]>	
+	</delete>
+	
+	<update id="update" parameterType="boardVo">
+		<![CDATA[
+		update board 
+		   set title=#{title },
+		       contents=#{contents }
+		 where no=#{no }
+		   and user_no=#{userNo }		
+		]]>	
+	</update>
+	
+	
+	
+</mapper>
